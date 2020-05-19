@@ -1,0 +1,121 @@
+html {
+  margin: 0;
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.975rem;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #4a4a4a;
+  text-align: left;
+  background-color: #fff;
+  height: 100%; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace; }
+
+a,
+area,
+button,
+[role="button"],
+input,
+label,
+select,
+summary,
+textarea {
+  touch-action: manipulation; }
+
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color; }
+
+button {
+  background-color: #0097e6;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px; }
+
+input[type=text], input[type=email], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 12px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 12px; }
+
+label {
+  text-align: left;
+  padding: 5% 0; }
+
+#root {
+  margin: 0;
+  height: 100%; }
+
+.topnav {
+  overflow: hidden;
+  background-color: #8e24aa;
+  color: #fff;
+  height: 2rem;
+  font-size: 18px;
+  padding: 1%; }
+
+.logo {
+  width: 25px;
+  padding: 3px 3px 0px 2px; }
+
+.empty-view {
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background: #fff; }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  width: 10%;
+  min-width: 300px;
+  overflow: scroll;
+  padding: 50px 40px;
+  box-shadow: -8px -8px 16px #aeadb6,  8px 8px 16px #ffffff;
+  border: solid 1px var(--white);
+  background-color: #fff;
+  margin: auto;
+  text-align: center; }
+
+.signup {
+  padding: 5% 0;
+  color: #0091ea; }
+
+.error {
+  color: #d50000; }
+
+.hide {
+  display: none; }
