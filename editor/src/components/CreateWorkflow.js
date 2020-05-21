@@ -11,10 +11,12 @@ class CreateWorkflow extends Component {
     super(props);
     this.state = {
       workflow: {
-        nodes: {},
+        nodes: {
+          0: { flowState: "pending", title: "", content: "", nodeId: 0 },
+        },
         state: "pending",
         name: "",
-        totalNodes: 0,
+        totalNodes: 1,
       },
     };
   }
@@ -34,6 +36,7 @@ class CreateWorkflow extends Component {
       flowState: "pending",
       title: "",
       content: "",
+      nodeId: totalNodes,
     };
     updatedWorkflow[workflowId].totalNodes += 1;
 
@@ -51,7 +54,14 @@ class CreateWorkflow extends Component {
       workflow: updatedWorkflow,
     });
   };
+  workflowNameChange = (workflowId, name) => {
+    let updatedWorkflow = Object.assign({}, this.state.workflow);
+    updatedWorkflow[workflowId].name = name;
 
+    this.setState({
+      workflow: updatedWorkflow,
+    });
+  };
   onAnswerChange = (workflowId, node, index) => {
     let updatedWorkflow = Object.assign({}, this.state.workflow);
     updatedWorkflow[workflowId].nodes[index] = node;
@@ -59,6 +69,26 @@ class CreateWorkflow extends Component {
     this.setState({
       workflow: updatedWorkflow,
     });
+  };
+
+  onShuffleNodes = (workflowId, nodes) => {
+    let updatedWorkflow = Object.assign({}, this.state.workflow);
+    updatedWorkflow[workflowId].nodes = nodes;
+
+    this.setState({
+      workflow: updatedWorkflow,
+    });
+  };
+
+  onSave = () => {
+    let { workflowId,onSave } = this.props;
+    let {workflow}=this.state;
+    let nodes=workflow[workflowId].nodes
+   let nodesEmpty = false
+   _.times(workflow[workflowId].totalNodes,(index)=>{
+      if(nodes[index].title===''||nodes[index].content==='')  nodesEmpty= true;
+    })
+    if(workflow[workflowId].name!=='' && !nodesEmpty) onSave(workflowId,workflow[workflowId])
   };
 
   render() {
@@ -72,20 +102,31 @@ class CreateWorkflow extends Component {
     return (
       <div>
         {login ? (
-          <div>
+          <div key={workflowId}>
             <WorkflowBar
               workflowId={workflowId}
               AddNode={this.AddNode}
               DeleteNode={this.DeleteNode}
+              WorkflowName={this.workflowNameChange}
+              onShuffleNodes={this.onShuffleNodes}
+              nodes={nodes}
+              onSave={this.onSave}
             />
             <div className="nodes">
               {_.times(totalNodes, (index) => {
                 return (
                   <Node
+                    key={nodes[index].nodeId}
                     node={nodes[index]}
                     nodeIndex={index}
                     workflowId={workflowId}
                     onAnswerChange={this.onAnswerChange}
+                    nextFlowState={
+                      index < totalNodes - 1 ? nodes[index + 1].flowState : null
+                    }
+                    prevFlowState={
+                      index !== 0 ? nodes[index - 1].flowState : null
+                    }
                   />
                 );
               })}

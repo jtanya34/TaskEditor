@@ -31,15 +31,11 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
+        <NavBar />
         <div className="empty-view">
-          <NavBar />
           <Switch>
             <Route exact path="/" component={Login} />
             <Route path="/workflows" component={Workflows} />
-            {/* <Route  path="/editauthor" render={props => <Editauthor author={this.state.author} {...props} />} /> */}
-            {/* <Route  path="/addbook" render={props => <Addbook addbook={this.addbook} {...props} />} />
-             <Route  path="/addauthor" render={props => <Addauthor addauthor={this.addauthor} {...props} />} />
-              */}
           </Switch>
         </div>
       </BrowserRouter>

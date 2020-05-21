@@ -22,10 +22,24 @@ class Workflows extends Component {
       },
     };
   }
+  onSave = (workflowId,workflow) => {
+    console.log('save')
+    let updatedWorkflows = Object.assign({}, this.state.workflows);
+    updatedWorkflows[workflowId] = workflow;
+    this.setState({
+      workflows: updatedWorkflows,
+    });
+  };
   render() {
     let { workflows } = this.state;
     if (getCookie("login"))
-      return <CreateWorkflow workflows={workflows} workflowId={"2345"} />;
+      return (
+        <CreateWorkflow
+          workflows={workflows}
+          workflowId={"2345"}
+          onSave={this.onSave}
+        />
+      );
     this.props.history.push("/");
     return "";
   }

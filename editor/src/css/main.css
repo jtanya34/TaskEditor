@@ -83,7 +83,7 @@ label {
   overflow: hidden;
   background-color: #8e24aa;
   color: #fff;
-  height: 2rem;
+  height: 30px;
   font-size: 18px;
   padding: 1%; }
 
@@ -145,6 +145,15 @@ label {
 .btn {
   margin-right: 12px; }
 
+.shuffle {
+  background-color: #5e35b1; }
+
+.add_node {
+  background-color: #00c853; }
+
+.delete {
+  background-color: #ef403d; }
+
 .nodes {
   display: flex;
   flex-wrap: wrap; }
@@ -154,9 +163,12 @@ label {
   flex-direction: column;
   width: 20%;
   min-width: 300px;
-  margin: 5%;
+  margin: 20px;
   background: #fff;
   box-shadow: 5px 5px 16px #5c5b60, -5px -5px 16px #ffffff; }
 
 #content {
   height: 300px; }
+
+.tick {
+  text-align: right; }

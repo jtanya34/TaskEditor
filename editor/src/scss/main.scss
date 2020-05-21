@@ -110,7 +110,7 @@ input[type=text], input[type=email], input[type=password] {
     overflow: hidden;
     background-color:map-get($map:$material-design-colors , $key:'purple-600' );
     color:#fff;
-    height: 2rem;
+    height: 30px;
     font-size: $font-size-heading;
     padding: 1%
 
@@ -175,9 +175,19 @@ input[type=text], input[type=email], input[type=password] {
 .buttons{
   align-content: center;
   margin:15px;  
+
 }
 .btn{
   margin-right:12px;
+}
+.shuffle{
+  background-color:map-get($material-design-colors, 'deep-purple-600');
+}
+.add_node{
+  background-color:map-get($material-design-colors, 'green-a700');
+}
+.delete{
+  background-color:map-get($material-design-colors, 'theme-danger-1');
 }
 .nodes{
 display: flex;
@@ -188,11 +198,13 @@ flex-wrap: wrap;
   flex-direction: column;
   width: 20%;
   min-width: 300px;
-  margin: 5%;
+  margin: 20px;
   background: #fff;
   box-shadow: 5px 5px 16px #5c5b60, -5px -5px 16px #ffffff;
 }
 #content{
 height: 300px;
 }
-
+.tick{
+  text-align: right
+}
