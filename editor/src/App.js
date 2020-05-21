@@ -3,8 +3,7 @@ import { Route, BrowserRouter, Switch } from "react-router-dom";
 
 //components
 import Login from "./components/Login";
-import { Workflows } from "./components/Workflows";
-import { CreateWorkflow } from "./components/CreateWorkflow";
+import Workflows from "./components/Workflows";
 import { NavBar } from "./static/NavBar";
 
 //css
@@ -37,7 +36,6 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Login} />
             <Route path="/workflows" component={Workflows} />
-            <Route path="/createworkflow" component={CreateWorkflow} />
             {/* <Route  path="/editauthor" render={props => <Editauthor author={this.state.author} {...props} />} /> */}
             {/* <Route  path="/addbook" render={props => <Addbook addbook={this.addbook} {...props} />} />
              <Route  path="/addauthor" render={props => <Addauthor addauthor={this.addauthor} {...props} />} />

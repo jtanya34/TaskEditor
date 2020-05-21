@@ -8,7 +8,6 @@ const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-  const [helperText] = useState("");
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -58,7 +57,6 @@ const Login = (props) => {
           label="Password"
           placeholder="Password"
           margin="normal"
-          helperText={helperText}
           onChange={(e) => setPassword(e.target.value)}
           onKeyPress={(e) => handleKeyPress(e)}
         />

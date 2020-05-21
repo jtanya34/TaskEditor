@@ -51,7 +51,7 @@ button {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 14px;
+  font-size: 15px;
   cursor: pointer;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.1);
   border-radius: 5px; }
@@ -63,7 +63,13 @@ input[type=text], input[type=email], input[type=password] {
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
-  font-size: 12px; }
+  font-size: 14px; }
+
+textarea {
+  margin: 18px;
+  box-shadow: 3px 3px 5px #5c5b60;
+  font-size: 14px;
+  padding: 10px; }
 
 label {
   text-align: left;
@@ -119,3 +125,38 @@ label {
 
 .hide {
   display: none; }
+
+.workflow_bar {
+  display: flex;
+  box-shadow: 5px 5px 16px #5c5b60;
+  height: 80px;
+  justify-content: space-between; }
+
+#WorkflowName {
+  width: 20%;
+  min-width: 195px;
+  margin: 15px;
+  box-shadow: 0px 1px 3px #5c5b6094; }
+
+.buttons {
+  align-content: center;
+  margin: 15px; }
+
+.btn {
+  margin-right: 12px; }
+
+.nodes {
+  display: flex;
+  flex-wrap: wrap; }
+
+.node {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  min-width: 300px;
+  margin: 5%;
+  background: #fff;
+  box-shadow: 5px 5px 16px #5c5b60, -5px -5px 16px #ffffff; }
+
+#content {
+  height: 300px; }
