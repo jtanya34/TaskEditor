@@ -1,6 +1,6 @@
 import React from "react";
 import { Input } from "../atoms/input";
-import { Tick } from "../assets/images/tick";
+import { Tick } from "./Tick";
 
 export const Node = (props) => {
   const onHandleChange = (key, value) => {
@@ -22,13 +22,23 @@ export const Node = (props) => {
   return (
     <div className="node">
       <Tick
+        className={"tick"}
         onHandleChange={onHandleChange}
         flowState={props.node.flowState}
         nextFlowState={props.nextFlowState}
         prevFlowState={props.prevFlowState}
+        ClickNode={true}
       />
-      <Input name={"title"} onHandleChange={onHandleChange} />
-      <Input name={"content"} onHandleChange={onHandleChange} />
+      <Input
+        name={"title"}
+        onHandleChange={onHandleChange}
+        value={props.node.title}
+      />
+      <Input
+        name={"content"}
+        onHandleChange={onHandleChange}
+        value={props.node.content}
+      />
     </div>
   );
 };

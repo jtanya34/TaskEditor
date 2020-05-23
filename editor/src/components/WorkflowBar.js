@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Input } from "../atoms/input";
+import { Button } from "../atoms/button";
 import { getRandomInt } from "../utils/gen_fun";
 import _ from "lodash";
 import cx from "classnames";
 
+
 export const WorkflowBar = (props) => {
+  
   const [shuffle, setShuffle] = useState(true);
   const onHandleChange = (key, value) => {
     props.WorkflowName(props.workflowId, value);
@@ -20,6 +23,7 @@ export const WorkflowBar = (props) => {
     }
     props.onShuffleNodes(props.workflowId, nodes);
   };
+
   useEffect(() => {
     if (props && props["nodes"]) {
       let totalNodes = Object.keys(props.nodes).length;
@@ -37,6 +41,7 @@ export const WorkflowBar = (props) => {
       <div>
         <Input
           name={"WorkflowName"}
+          value={props.name}
           onHandleChange={onHandleChange}
           workflowId={props.workflowId}
         />
@@ -62,9 +67,15 @@ export const WorkflowBar = (props) => {
         >
           Add Node
         </button>
-        <button className="btn save"
-        onClick={() => props.onSave()}
-        >Save</button>
+        <button 
+        className="btn save" onClick={() => props.onSave()}>
+          Save
+        </button>
+        <Button
+        color={'#0d47a1'}
+        onClick={()=>props.history.push('/workflows')}
+        name='Show Workflows'
+        />
       </div>
     </div>
   );

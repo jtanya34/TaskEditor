@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import _ from "lodash";
 import { getCookie } from "../utils/gen_fun";
-
+import { setCookie } from "../utils/gen_fun";
 import { WorkflowBar } from "./WorkflowBar";
 import { Node } from "./Node";
-import { element } from "prop-types";
+import { deleteCookie } from "../utils/gen_fun";
 
 class CreateWorkflow extends Component {
   constructor(props) {
@@ -22,12 +22,19 @@ class CreateWorkflow extends Component {
   }
 
   componentDidMount() {
-    let { workflowId } = this.props;
+    let { workflowId } = this.props.match.params;
     let workflow = {};
-    workflow[workflowId] = this.state.workflow;
-    this.setState({
-      workflow,
-    });
+    let workflows = getCookie("workflows");
+    workflows = JSON.parse(workflows);
+    if (workflows[workflowId]) {
+      workflow[workflowId] = workflows[workflowId];
+      this.setState({ workflow: workflow });
+    } else {
+      workflow[workflowId] = this.state.workflow;
+      this.setState({
+        workflow,
+      });
+    }
   }
   AddNode = (workflowId) => {
     let updatedWorkflow = Object.assign({}, this.state.workflow);
@@ -65,7 +72,10 @@ class CreateWorkflow extends Component {
   onAnswerChange = (workflowId, node, index) => {
     let updatedWorkflow = Object.assign({}, this.state.workflow);
     updatedWorkflow[workflowId].nodes[index] = node;
-
+    updatedWorkflow[workflowId].state =
+      node.flowState !== "completed"
+        ? "pending"
+        : updatedWorkflow[workflowId].state;
     this.setState({
       workflow: updatedWorkflow,
     });
@@ -81,21 +91,30 @@ class CreateWorkflow extends Component {
   };
 
   onSave = () => {
-    let { workflowId,onSave } = this.props;
-    let {workflow}=this.state;
-    let nodes=workflow[workflowId].nodes
-   let nodesEmpty = false
-   _.times(workflow[workflowId].totalNodes,(index)=>{
-      if(nodes[index].title===''||nodes[index].content==='')  nodesEmpty= true;
-    })
-    if(workflow[workflowId].name!=='' && !nodesEmpty) onSave(workflowId,workflow[workflowId])
+    let { workflowId } = this.props.match.params;
+    let { workflow } = this.state;
+    let nodes = workflow[workflowId].nodes;
+    let nodesEmpty = false;
+    _.times(workflow[workflowId].totalNodes, (index) => {
+      if (nodes[index].title === "" || nodes[index].content === "")
+        nodesEmpty = true;
+    });
+    if (workflow[workflowId].name !== "" && !nodesEmpty) {
+      let workflows = getCookie("workflows")
+        ? JSON.parse(getCookie("workflows"))
+        : "";
+      workflows[workflowId] = workflow[workflowId];
+      deleteCookie("workflows");
+      setCookie("workflows", JSON.stringify(workflows));
+      this.props.history.push("/workflows");
+    }
   };
 
   render() {
     let login = getCookie("login");
-    let { workflowId } = this.props;
+    let { workflowId } = this.props.match.params;
     if (this.state.workflow[workflowId]) {
-      var { nodes, totalNodes } =
+      var { nodes, totalNodes, name } =
         this.state.workflow && this.state.workflow[workflowId];
     }
 
@@ -110,7 +129,9 @@ class CreateWorkflow extends Component {
               WorkflowName={this.workflowNameChange}
               onShuffleNodes={this.onShuffleNodes}
               nodes={nodes}
+              name={name}
               onSave={this.onSave}
+              history={this.props.history}
             />
             <div className="nodes">
               {_.times(totalNodes, (index) => {

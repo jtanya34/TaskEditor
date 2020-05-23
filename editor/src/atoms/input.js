@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 export const Input = (props) => {
   const [value, setValue] = useState("");
@@ -14,6 +14,8 @@ export const Input = (props) => {
       label={props.name}
       placeholder={props.name}
       onChange={(e) => onChange(e, props)}
+      className={props.className}
+      value={props.value}
     />
   );
 };

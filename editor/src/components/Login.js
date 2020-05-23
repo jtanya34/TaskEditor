@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import cx from "classnames";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 import { setCookie } from "../utils/gen_fun";
 
@@ -39,8 +39,6 @@ const Login = (props) => {
       <form className="card" noValidate autoComplete="off">
         <h3>Login</h3>
         <input
-          error={error}
-          fullWidth
           id="email"
           type="email"
           label="Email"
@@ -50,13 +48,10 @@ const Login = (props) => {
           onKeyPress={(e) => handleKeyPress(e)}
         />
         <input
-          error={error}
-          fullWidth
           id="password"
           type="password"
           label="Password"
           placeholder="Password"
-          margin="normal"
           onChange={(e) => setPassword(e.target.value)}
           onKeyPress={(e) => handleKeyPress(e)}
         />
@@ -64,8 +59,7 @@ const Login = (props) => {
           Enter valid details
         </span>
         <label>
-          <input type="checkbox" checked="checked" name="remember" /> Remember
-          me
+          <input type="checkbox" name="remember" /> Remember me
         </label>
 
         <button

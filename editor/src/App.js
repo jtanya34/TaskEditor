@@ -5,6 +5,7 @@ import { Route, BrowserRouter, Switch } from "react-router-dom";
 import Login from "./components/Login";
 import Workflows from "./components/Workflows";
 import { NavBar } from "./static/NavBar";
+import CreateWorkflow from "./components/CreateWorkflow";
 
 //css
 import "./css/main.css";
@@ -27,7 +28,6 @@ class App extends Component {
     this.setState({ fields, valid: true });
   }
 
-  async handleLogin(event) {}
   render() {
     return (
       <BrowserRouter>
@@ -36,6 +36,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Login} />
             <Route path="/workflows" component={Workflows} />
+            <Route path="/workflow/:id" component={CreateWorkflow} />
           </Switch>
         </div>
       </BrowserRouter>

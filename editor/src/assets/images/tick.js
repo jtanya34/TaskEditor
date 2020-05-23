@@ -1,30 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 
-export const Tick = (props) => {
-  let [color, setColor] = useState("#616161");
-  const onClick = () => {
-    let { flowState, nextFlowState, prevFlowState } = props;
-    if (flowState === "pending") {
-      setColor("#2962ff");
-      props.onHandleChange("flowState", "Inprogress");
-    } else if (
-      flowState === "Inprogress" &&
-      (prevFlowState === "completed" || prevFlowState === null)
-    ) {
-      setColor("#00c853");
-      props.onHandleChange("flowState", "completed");
-    } else if (flowState === "completed" && nextFlowState !== "completed") {
-      setColor("#616161");
-      props.onHandleChange("flowState", "pending");
-    }
-  };
+export const TickImg = ({ color, onClick, className }) => {
   return (
-    <div className="tick">
+    <div className={className}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="50"
-        height="50"
-        viewBox="0 0 100 100"
+        width="32"
+        height="32"
+        viewBox="19 20 60 60"
         version="1.1"
         x="0px"
         y="0px"
