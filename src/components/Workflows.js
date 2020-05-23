@@ -65,15 +65,15 @@ class Workflows extends Component {
     let state = "completed";
     let { workflows } = this.state;
     let { totalNodes, nodes } = workflows[id];
-      _.times(totalNodes, (index) => {
-        if (
-          nodes[index].flowState === "pending" ||
-          nodes[index].flowState === "Inprogress"
-        ) {
-          state = "pending";
-        }
-      });
-    
+    _.times(totalNodes, (index) => {
+      if (
+        nodes[index].flowState === "pending" ||
+        nodes[index].flowState === "Inprogress"
+      ) {
+        state = "pending";
+      }
+    });
+
     return state;
   };
 

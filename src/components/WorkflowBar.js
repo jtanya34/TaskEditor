@@ -5,9 +5,7 @@ import { getRandomInt } from "../utils/gen_fun";
 import _ from "lodash";
 import cx from "classnames";
 
-
 export const WorkflowBar = (props) => {
-  
   const [shuffle, setShuffle] = useState(true);
   const onHandleChange = (key, value) => {
     props.WorkflowName(props.workflowId, value);
@@ -67,14 +65,13 @@ export const WorkflowBar = (props) => {
         >
           Add Node
         </button>
-        <button 
-        className="btn save" onClick={() => props.onSave()}>
+        <button className="btn save" onClick={() => props.onSave()}>
           Save
         </button>
         <Button
-        color={'#0d47a1'}
-        onClick={()=>props.history.push('/workflows')}
-        name='Show Workflows'
+          color={"#0d47a1"}
+          onClick={() => props.history.push("/workflows")}
+          name="Show Workflows"
         />
       </div>
     </div>
